@@ -1,0 +1,164 @@
+{% load static %}
+<html lang="">
+<!-- To declare your language - read more here: https://www.w3.org/International/questions/qa-html-language-declarations -->
+
+<head>
+  <title>Index Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <style>
+    .abcd {
+      height: 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .category {
+      background-color: rgb(43, 44, 45);
+
+    }
+
+    .bubble {
+      border-radius: 50%;
+      padding:2px;
+      color: white;
+      background-color: red;
+      border: 2px solid white;
+      font-size: 10px;
+      position: absolute;
+      top: 10px;
+      right: -10px;
+    }
+
+    .dropdown {
+      position: relative;
+      color: white;
+      background-color: grey;
+      padding: 5px;
+      border-radius: 2px;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      color: black;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      padding: 12px 16px;
+      z-index: 1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+  </style>
+</head>
+
+<body id="top">
+  <!-- Top Background Image Wrapper -->
+  <div class="abcd" style="background-image:url(' {% static 'images/indexbg.png' %} ');">
+    <div class="wrapper row0">
+      <div id="topbar" class="hoc clear">
+
+        <div class="fl_right">
+          <ul class="nospace">
+
+            <li id="searchform">
+              <div>
+                <form action="search" method="get">
+                  <fieldset>
+                    <legend>Quick Search:</legend>
+                    <input type="text" name="query" placeholder="Enter search term&hellip;">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                  </fieldset>
+                </form>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="wrapper row1">
+      <link href=" {% static 'layout.css' %} " rel="stylesheet" type="text/css" media="all">
+      <header id="header" class="hoc clear">
+        <div id="logo" class="fl_left">
+          <h1><a href="">AVODHA SHOPPING</a></h1>
+        </div>
+        <nav id="mainav" class="fl_right">
+          <ul class="clear">
+            <li class="active"><a href="">Home</a></li>
+            <li><a class="active" href="#">Cart
+                <div class="bubble">{{itc}}</div>
+              </a>
+            </li>
+            <li><a class="active" href="#">Register</a></li>
+            <li><a class="active" href="#">Logoutn</a></li>
+
+          </ul>
+        </nav>
+      </header>
+    </div>
+    <div id="pageintro" class="hoc clear">
+      <article>
+        <h3 class="heading">QUALITY FOOD ITEMS
+        </h3>
+        <p>Register with us and have quality food products delivered at your door step.</p>
+        <footer>
+
+        </footer>
+      </article>
+    </div>
+  </div>
+  <div class="wrapper row3">
+    <div class="category">
+      <div class="dropdown">
+        <span>Category</span>
+        <div class="dropdown-content">
+          {% for j in ct %}
+          <a href="{{j.get_url}}">
+            {{j.name}}
+          </a><br>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <main class="hoc container clear">
+      <section id="introblocks">
+        <ul class="nospace group btmspace-80">
+          {% for i in pg.object_list %}
+          <li class="one_third">
+            <figure><a class="imgover" href="{{i.get_url}}"><img src=" {{i.img.url}} " alt=""></a>
+              <figcaption>
+                <h6 class="heading">{{i.name}}</h6>
+                {% comment %} <p>{{i.desc|truncatewords:17}}</p>
+                <p>₹ {{i.price}}</p>
+                <p>Stock: {{i.stock}}</p>
+              </figcaption>
+            </figure>{% endcomment %}
+          </li>
+          {% endfor %}
+        </ul>
+      </section>
+
+      <div style="text-align:center;">
+        {% for p in pg.paginator.page_range %}
+        <a href="?page={{p}}" class="btn btn-light btn-sm {% if pg.number == p %}active{% endif %}">{{p}}</a>
+        {% endfor %}
+      </div>
+      <hr class="btmspace-80">
+
+      <div class="clear"></div>
+    </main>
+
+  </div>
+  </div>
+
+  <script src=" {% static 'hm/layout/scripts/jquery.min.js' %} "></script>
+  <script src=" {% static 'hm/layout/scripts/jquery.backtotop.js' %} "></script>
+  <script src=" {% static 'hm/layout/scripts/jquery.mobilemenu.js' %} "></script>
+</body>
+
+</html>

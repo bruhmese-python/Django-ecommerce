@@ -1,0 +1,191 @@
+{% load static %}
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="keywords" content="Hail-Lobster">
+  <meta name="description" content="">
+  <meta name="page_type" content="np-template-header-footer-from-plugin">
+  <title>Cart</title>
+  <link rel="stylesheet" href=" {% static 'custom.css' %} " media="screen">
+  <link rel="stylesheet" href=" {% static 'Cart.css' %} " media="screen">
+  <script class="u-script" type="text/javascript" src=" {% static 'jquery.js' %} " defer=""></script>
+  <script class="u-script" type="text/javascript" src=" {% static 'custom.js' %} " defer=""></script>
+  <meta name="generator" content="Nicepage 3.23.2, nicepage.com">
+  <link id="u-theme-google-font" rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+  <link id="u-page-google-font" rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Oswald:200,300,400,500,600,700|Lobster:400">
+
+  <style>
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: #FF6A36;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: #fa5116;
+    }
+    .incr-decr{
+      width: 100px;
+      height: 100px;
+      padding: 0px 5px 0px 5px;
+      color:black;
+      background-color: rgb(220, 220, 220);
+      border-radius: 50%;
+      border:1px solid #737373 ;
+    }
+
+  </style>
+
+  <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": ""
+}</script>
+  <meta name="theme-color" content="#478ac9">
+  <meta property="og:title" content="Cart">
+  <meta property="og:type" content="website">
+</head>
+
+<body class="u-body zoomed-body">
+  <!-- Header -->
+  <header class="u-clearfix u-gradient u-header u-header" id="sec-3781">
+{% comment %} {% include '/templates/Modified_files/base.html' %} {% endcomment %}
+  </header>
+
+  <section class="u-clearfix u-section-1" id="sec-f64a">
+    <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
+      <div class="u-layout" style="background-color: white;position: relative;top: 32px;">
+        <div class="u-layout-row">
+
+          <!-- Grid Column 1 -->
+          <div class="u-container-style u-layout-cell u-shape-rectangle u-size-38 u-layout-cell-1">
+            <div class="u-container-layout u-container-layout-1">
+              <p style="height: 50px;"></p>
+              <div style="overflow:scroll; height:800px;width: 90%;">
+
+                <!-- Products Description  -->
+                {% for i in ci %}
+                <div class="u-border-2 u-border-grey-15 u-container-style u-group u-radius-4 u-shape-round u-group-1">
+                  <div class="u-container-layout u-container-layout-2">
+                    <div class="u-border-1 u-border-grey-40 u-line u-line-vertical u-line-1">
+                    </div>
+                    <div class="u-container-style u-group u-shape-rectangle u-group-2">
+                      <div class="u-container-layout u-valign-middle u-container-layout-3">
+                        <p class="u-align-center u-custom-font u-font-raleway u-text u-text-1"> ₹{{i.prodt.price}}</p>
+                        <a href="{%url 'remove' i.prodt.id%}" class="circle_delete u-hover-custom-color-5" style=";position: absolute;right:0px;bottom:10px;"
+                          id="delete_button"><img src="{% static '/images/delete.png' %}"></img></a>
+                      </div>
+                    </div>
+                    <div class="u-container-style u-group u-shape-rectangle u-group-3">
+                      <div class="u-container-layout u-container-layout-4">
+                        <img class="u-image u-image-default u-image-1" src=" {{i.prodt.img.url}} " alt="" data-image-width="400"
+                          data-image-height="265">
+                        <div class="u-container-style u-group u-shape-rectangle u-group-4">
+                          <div class="u-container-layout u-container-layout-5">
+                            <p class="u-custom-font u-font-raleway u-text u-text-2">{{i.prodt.name}}<br>
+                            <p class="u-custom-font u-font-raleway u-text u-text-3">
+                              Qty:
+                              <a href="{%url 'dec' i.prodt.id %}" class="incr-decr u-hover-custom-color-5">-</a>                                
+                              {{i.quantity}}
+                              <a href="{%url 'addcart' i.prodt.id %}" class="incr-decr u-hover-custom-color-5">+</a>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+
+          <!-- Grid Column 2 -->
+          <div class="u-align-left u-container-style u-layout-cell u-size-22 u-layout-cell-2">
+            <div class="u-container-layout u-container-layout-6"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="u-clearfix u-gutter-0 u-layout-wrap u-layout-wrap-2">
+
+      <!-- Summary box -->
+      <div class="u-layout">
+        <div class="u-layout-row">
+          <div class="u-container-style u-layout-cell u-size-4 u-layout-cell-3">
+
+            <!-- Column1 for svg -->
+            <div class="u-container-layout u-container-layout-7">
+              <div class="u-shape u-shape-svg u-text-grey-50 u-shape-1">
+                <!-- svg -->
+                <svg class="u-svg-link" preserveAspectRatio="none" viewBox="0 0 160 140">
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href=" {% static '#svg-edf8' %} "></use>
+                </svg>
+                <svg class="u-svg-content" viewBox="0 0 160 140" x="0px" y="0px" id="svg-edf8">
+                  <path d="M80,0l80,140H0L80,0z"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <!-- Column2 for Box -->
+          <div class="u-container-style u-layout-cell u-size-56 u-layout-cell-4">
+            <div class="u-container-layout u-container-layout-8">
+              <div class="u-container-style u-gradient u-group u-shape-rectangle u-group-5 u-border-radius">
+                <!-- Checkout Box -->
+                <div class="u-container-layout u-container-layout-9 u-border-radius"
+                  style="box-shadow: -14px 15px 26px 0px #737373;">
+                  <div class="u-grey-70 u-radius-15 u-shape u-shape-round u-shape-2"></div>
+                  <h6 class="u-custom-font u-font-oswald u-text u-text-default u-text-grey-50 u-text-4">S U M M A R Y
+                  </h6>
+                  <p class="u-align-center u-custom-font u-font-oswald u-text u-text-white u-text-5"> ₹{{t}}</p>
+                  <div class="u-clearfix u-custom-html u-custom-html-1">
+                    <img src=" {% static 'images/payments.png' %} " usemap="#image-map"
+                      style="filter: sepia(70%);">
+                    <map name="image-map">
+                      <area target="_parent" alt="Visa" title="Visa" href="https://developer.visa.com/"
+                        coords="3,4,47,31" shape="rect">
+                      <area target="_parent" alt="Nah" title="Nah" href=" {% static 'bruh' %} " coords="58,2,100,32" shape="rect">
+                      <area target="_parent" alt="American Express" title="American Express"
+                        href="https://www.americanexpress.com/en-in/" coords="112,6,157,32" shape="rect">
+                      <area target="_parent" alt="Discover" title="Discover"
+                        href="https://www.discoverglobalnetwork.com/" coords="169,2,213,31" shape="rect">
+                      <area target="_parent" alt="Mastercard" title="Mastercard" href="https://www.mastercard.com/"
+                        coords="224,4,267,32" shape="rect">
+                    </map>
+                  </div>
+                  <!-- Checkout submit button -->
+                  <a href="https://nicepage.com/html-templates"
+                    class="u-active-custom-color-8 u-border-none u-btn u-button-style u-custom-color-6 u-hover-custom-color-5 u-btn-1">Checkout</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="u-align-center u-clearfix u-footer u-gradient u-footer" id="sec-bcab">
+    <div class="u-clearfix u-sheet u-sheet-1">
+      <h1 class="u-custom-font u-font-lobster u-text u-text-grey-80 u-title u-text-1">E-commerce</h1>
+    </div>
+  </footer>
+</body>
+
+</html>

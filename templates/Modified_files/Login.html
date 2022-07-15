@@ -1,0 +1,174 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+    </style>
+    <title>Login</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href=" {% static 'custom.css' %} ">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        html,
+        body {
+
+            width: 100%;
+            height: 100%;
+            color: #FFFFFF;
+            font-size: 16px;
+            font-family: sans-serif;
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+            background: linear-gradient(53deg, #bb7000 0%, rgb(218, 105, 0) 100%);
+        }
+
+        .bodycontainer {
+            display: grid;
+            grid-template-columns: 1.0fr 1.0fr;
+            grid-template-rows: 1.0fr;
+            gap: 0px 0px;
+            grid-auto-flow: row;
+            grid-template-areas:
+                "left_grid right_grid";
+        }
+
+        .body-width {
+            height: 100%;
+            width: 100%;
+
+        }
+
+        .top-text {
+            z-index: 2;
+            background: linear-gradient(0deg, #000000 0%, rgba(0, 0, 0, 0.5) 100%);
+        }
+
+        .left_grid {
+            grid-area: left_grid;
+            text-align: right;
+            background: #fff url( {% static 'images/background2.png' %} ) center center/cover no-repeat local;
+        }
+
+        .right_grid {
+            grid-area: right_grid;
+        }
+
+        .form-box {
+            margin-left: 20%;
+            margin-right: 20%;
+            margin-top: 2%;
+            background-color: blue;
+            padding: 2% 2% 2% 2%;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            background: #1B1B1B;
+            background: -moz-linear-gradient(left, #1B1B1B 0%, #3F3F3F 100%);
+            background: -webkit-linear-gradient(left, #1B1B1B 0%, #3F3F3F 100%);
+            background: linear-gradient(to right, #1B1B1B 0%, #3F3F3F 100%);
+            box-shadow: -14px 15px 26px 0px #1B1B1B;
+
+        }
+
+        .form-extras {
+            font-size: 11px;
+
+        }
+
+        .u-banner {
+            background: url( {% static 'images/banner.png' %} ) center center/cover no-repeat local;
+            z-index: 3;
+            width: 210px;
+            height: 62px;
+            margin-left: -7%;
+            margin-bottom: 2%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .u-emblem {
+            background: url( {% static 'images/emblem.png' %} ) center center/cover no-repeat local;
+            z-index: 4;
+            width: 330px;
+            height: 216px;
+            position: fixed;
+            bottom: 0;
+        }
+
+        .u-pocket_shadow {
+            background: url( {% static 'images/shadow.png' %} ) center center/cover no-repeat local;
+            z-index: 0;
+            width: 100%;
+            height: 55px;
+            position: relative;
+            top: 2.5%;
+            transform: rotateX(180deg) rotateY(0deg) rotateZ(0deg);
+
+        }
+
+        .register-custom {
+            display: block;
+            margin-top: 12%;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bodycontainer body-width">
+
+        <div class="left_grid">
+            <div class="top-text body-width">
+                <div class="u-emblem"></div>
+                <span style="color:#ffffff;position:relative;top: 30%;">
+                    <span style="font-size:72px"><span style="font-family:Verdana,Geneva,sans-serif">Buy
+                            less.</span></span><br />
+                    <span style="font-size:48px"><span style="font-family:Verdana,Geneva,sans-serif">Choose well
+                            .</span></span><br />
+                    <span style="font-size:72px"><span style="font-family:Verdana,Geneva,sans-serif">Make it
+                            last.</span></span>
+                </span>
+
+            </div>
+        </div>
+
+        <div class="right_grid">
+            <div class="u-pocket_shadow"></div>
+            <div class=" form-box">
+                <div class="u-banner">
+                </div>
+                <!-- form -->
+                <div class="rendered-form form-extras">
+                    <div class="formbuilder-text form-group field-user_name">
+                        <label for="user_name" class="formbuilder-text-label">Username<span
+                                class="formbuilder-required">*</span></label>
+                        <input type="text" class="form-control" name="user_name" access="false" id="user_name"
+                            required="required" aria-required="true">
+                    </div>
+                    <div class="formbuilder-text form-group field-pwd">
+                        <label for="pwd" class="formbuilder-text-label">Password<span
+                                class="formbuilder-required">*</span></label>
+                        <input type="password" class="form-control" name="pwd" access="false" id="pwd"
+                            required="required" aria-required="true">
+                    </div>
+                    <a href="https://nicepage.com/html-templates"
+                        class="register-custom u-active-custom-color-8 u-border-none u-btn u-button-style u-custom-color-6 u-hover-custom-color-5 u-btn-1">Login</a><br>
+                    <a href="/register" class="link">Register</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
